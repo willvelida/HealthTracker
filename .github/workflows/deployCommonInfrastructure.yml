@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run Bicep Linter
-        run: az bicep build --file ./deploy/main.bicep
+        run: az bicep build --file ./HealthTracker.Infrastructure/deploy/main.bicep
 
   validate:
     runs-on: ubuntu-latest
@@ -49,7 +49,7 @@ jobs:
             az deployment group what-if --resource-group ${{ secrets.AZURE_RG }} --template-file ./HealthTracker.Infrastructure/deploy/main.bicep --parameters ./HealthTracker.Infrastructure/deploy/parameters.prod.json
   deploy:
     runs-on: ubuntu-latest
-    environment: Dev
+    environment: Production
     needs: preview
     steps:
       - uses: actions/checkout@v2
