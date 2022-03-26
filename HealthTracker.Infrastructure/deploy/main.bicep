@@ -46,6 +46,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
 
 resource cosmosAccount 'Microsoft.DocumentDB/databaseAccounts@2021-11-15-preview' = {
   name: cosmosDBAccountName
+  location: location
   tags: tags
   properties: {
     databaseAccountOfferType: 'Standard'
@@ -140,6 +141,9 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-11-01-preview' = {
     enableSoftDelete: true
     softDeleteRetentionInDays: 7
     enabledForTemplateDeployment: true
+    accessPolicies: [
+      
+    ]
   }
 }
 
