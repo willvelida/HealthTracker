@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appServicePlanName": {
+            "value": "myhealthtrackerasp"
+        },
+        "cosmosDBAccountName": {
+            "value": "myhealthtrackerdb"
+        },
+        "appInsightsName": {
+            "value": "myhealthtrackerai"
+        },
+        "appConfigStoreName": {
+            "value": "myhealthtrackeracs"
+        },
+        "keyVaultName": {
+            "value": "myhealthtrackerkv"
+        },
+        "serviceBusNamespaceName": {
+            "value": "myhealthtrackersb"
+        }
+    }
+}
