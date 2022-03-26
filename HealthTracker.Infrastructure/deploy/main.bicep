@@ -19,6 +19,9 @@ param keyVaultName string
 @description('The time that the resource was last deployed')
 param lastDeployed string = utcNow()
 
+@description('The name of the Service Bus Namespace that will be deployed')
+param serviceBusNamespaceName string
+
 var cosmosDBName = 'MyHealthTrackerDB'
 var cosmosContainerName = 'Records'
 var tags = {
@@ -69,6 +72,9 @@ resource cosmosDB 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2021-11-15
   properties: {
     resource: {
       id: cosmosDBName
+    }
+    options: {
+      throughput: 1000
     }
   }
 }
@@ -134,5 +140,17 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-11-01-preview' = {
     enableSoftDelete: true
     softDeleteRetentionInDays: 7
     enabledForTemplateDeployment: true
+  }
+}
+
+resource serviceBus 'Microsoft.ServiceBus/namespaces@2021-11-01' = {
+  name: serviceBusNamespaceName
+  tags: tags
+  location: location 
+  sku: {
+    name: 'Basic'
+  }
+  identity: {
+    type: 'SystemAssigned'
   }
 }
