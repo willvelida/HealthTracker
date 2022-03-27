@@ -1,9 +1,9 @@
-name: HealthTracker.Infrastructure
+name: HealthTracker.RefreshToken
 
 on:
   push:
     paths:
-      - 'HealthTracker.Infrastructure/*'
+      - 'HealthTracker.RefreshToken/*'
   workflow_dispatch:
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run Bicep Linter
-        run: az bicep build --file ./HealthTracker.Infrastructure/deploy/main.bicep
+        run: az bicep build --file ./HealthTracker.RefreshToken/deploy/main.bicep
 
   validate:
     runs-on: ubuntu-latest
@@ -29,8 +29,8 @@ jobs:
         with:
           deploymentName: ${{ github.run_number }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
-          template: ./HealthTracker.Infrastructure/deploy/main.bicep
-          parameters: ./HealthTracker.Infrastructure/deploy/parameters.prod.json
+          template: ./HealthTracker.RefreshToken/deploy/main.bicep
+          parameters: ./HealthTracker.RefreshToken/deploy/parameters.prod.json
           deploymentMode: Validate
 
   preview:
@@ -46,7 +46,7 @@ jobs:
         name: Run what-if
         with:
           inlineScript: |
-            az deployment group what-if --resource-group ${{ secrets.AZURE_RG }} --template-file ./HealthTracker.Infrastructure/deploy/main.bicep --parameters ./HealthTracker.Infrastructure/deploy/parameters.prod.json
+            az deployment group what-if --resource-group ${{ secrets.AZURE_RG }} --template-file ./HealthTracker.RefreshToken/deploy/main.bicep --parameters ./HealthTracker.RefreshToken/deploy/parameters.prod.json
   deploy:
     runs-on: ubuntu-latest
     environment: Production
@@ -63,6 +63,6 @@ jobs:
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
-          template: ./HealthTracker.Infrastructure/deploy/main.bicep
-          parameters: ./HealthTracker.Infrastructure/deploy/parameters.prod.json
+          template: ./HealthTracker.RefreshToken/deploy/main.bicep
+          parameters: ./HealthTracker.RefreshToken/deploy/parameters.prod.json
           failOnStdErr: false
