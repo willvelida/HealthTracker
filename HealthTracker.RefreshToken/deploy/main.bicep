@@ -19,7 +19,16 @@ param appInsightsName string
 @description('The name of the key vault that we will create Access Policies for')
 param keyVaultName string
 
+@description('The time that the resource was last deployed')
+param lastDeployed string = utcNow()
+
 var functionRuntime = 'dotnet'
+var tags = {
+  'ApplicationName': 'HealthTracker'
+  'Component': 'RefreshToken'
+  'Environment': 'Production'
+  'LastDeployed': lastDeployed
+}
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' existing = {
   name: appServicePlanName
@@ -35,6 +44,7 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-11-01-preview' existing = {
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = {
   name: storageAccountName
+  tags: tags
   location: location
   sku: {
     name: storageSku
@@ -48,6 +58,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = {
 
 resource functionApp 'Microsoft.Web/sites@2021-03-01' = {
   name: functionAppName
+  tags: tags
   location: location
   kind: 'functionapp'
   properties: {
