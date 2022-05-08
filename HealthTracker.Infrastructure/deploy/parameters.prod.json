@@ -6,7 +6,7 @@
             "value": "myhealthtrackerasp"
         },
         "cosmosDBAccountName": {
-            "value": "myhealthtrackerdb"
+            "value": "myhealthtrackercosmosdb"
         },
         "appInsightsName": {
             "value": "myhealthtrackerai"
@@ -19,6 +19,9 @@
         },
         "serviceBusNamespaceName": {
             "value": "myhealthtrackersb"
+        },
+        "logAnalyticsWorkspaceName": {
+            "value": "myhealthtrackerla"
         }
     }
 }

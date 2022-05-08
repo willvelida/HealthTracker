@@ -19,6 +19,9 @@ param keyVaultName string
 @description('The time that the resource was last deployed')
 param lastDeployed string = utcNow()
 
+@description('The name of the log analytics workspace that will be deployed')
+param logAnalyticsWorkspaceName string
+
 @description('The name of the Service Bus Namespace that will be deployed')
 param serviceBusNamespaceName string
 
@@ -29,6 +32,10 @@ var tags = {
   'Component': 'CommonInfrastructure'
   'Environment': 'Production'
   'LastDeployed': lastDeployed
+}
+var retentionPolicy = {
+  days: 30
+  enabled: true 
 }
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
@@ -41,6 +48,32 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
   } 
   properties: {
     
+  }
+}
+
+resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
+  name: appInsightsName
+  tags: tags
+  location: location
+  kind: 'web'
+  properties: {
+    Application_Type: 'web'
+    publicNetworkAccessForIngestion: 'Enabled'
+    publicNetworkAccessForQuery: 'Enabled'
+    WorkspaceResourceId: logAnalytics.id 
+  }
+}
+
+resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' = {
+  name: logAnalyticsWorkspaceName
+  location: location
+  tags: tags
+  properties: {
+    sku: {
+      name: 'PerGB2018'
+    }
+    publicNetworkAccessForIngestion: 'Enabled'
+    publicNetworkAccessForQuery: 'Enabled'
   }
 }
 
@@ -104,15 +137,45 @@ resource cosmosContainer 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/con
   }
 }
 
-resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
-  name: appInsightsName
-  tags: tags
-  location: location
-  kind: 'web'
+resource cosmosDiagnosticSettings 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'cosmosDiagnosticSettings'
+  scope: cosmosAccount
   properties: {
-    Application_Type: 'web'
-    publicNetworkAccessForIngestion: 'Enabled'
-    publicNetworkAccessForQuery: 'Enabled' 
+    logs: [
+      {
+        category: 'DataPlaneRequests'
+        enabled: true
+        retentionPolicy: retentionPolicy
+      }
+      {
+        category: 'QueryRuntimeStatistics'
+        enabled: true
+        retentionPolicy: retentionPolicy
+      }
+      {
+        category: 'PartitionKeyStatistics'
+        enabled: true
+        retentionPolicy: retentionPolicy
+      }
+      {
+        category: 'PartitionKeyRUConsumption'
+        enabled: true
+        retentionPolicy: retentionPolicy
+      }
+      {
+        category: 'ControlPlaneRequests'
+        enabled: true
+        retentionPolicy: retentionPolicy
+      }
+    ]
+    metrics: [
+      {
+        category: 'Requests'
+        enabled: true
+        retentionPolicy: retentionPolicy
+      }
+    ]
+    workspaceId: logAnalytics.id
   }
 }
 
