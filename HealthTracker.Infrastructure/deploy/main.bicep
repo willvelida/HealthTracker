@@ -114,7 +114,7 @@ resource cosmosContainer 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/con
       id: cosmosContainerName
       partitionKey: {
         paths: [
-          '/RecordType'
+          '/DocumentType'
         ]
         kind: 'Hash'
       }
