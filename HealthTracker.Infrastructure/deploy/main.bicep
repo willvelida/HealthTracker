@@ -90,7 +90,6 @@ resource cosmosAccount 'Microsoft.DocumentDB/databaseAccounts@2021-11-15-preview
     consistencyPolicy: {
       defaultConsistencyLevel: 'Session'
     }
-    enableFreeTier: true
   }
   identity: {
     type: 'SystemAssigned'
@@ -103,9 +102,6 @@ resource cosmosDB 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2021-11-15
   properties: {
     resource: {
       id: cosmosDBName
-    }
-    options: {
-      throughput: 1000
     }
   }
 }
@@ -129,6 +125,11 @@ resource cosmosContainer 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/con
             path: '/*'
           }
         ]
+      }
+    }
+    options: {
+      autoscaleSettings: {
+        maxThroughput: 4000
       }
     }
   }
