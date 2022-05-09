@@ -11,9 +11,6 @@
         "appInsightsName": {
             "value": "myhealthtrackerai"
         },
-        "appConfigStoreName": {
-            "value": "myhealthtrackeracs"
-        },
         "keyVaultName": {
             "value": "myhealthtrackerkv"
         },

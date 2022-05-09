@@ -10,9 +10,6 @@ param cosmosDBAccountName string
 @description('Name of the App Insights instance that will be deployed')
 param appInsightsName string
 
-@description('Name of the App Configuration Store')
-param appConfigStoreName string
-
 @description('The name of the Key Vault that will be deployed')
 param keyVaultName string
 
@@ -176,18 +173,6 @@ resource cosmosDiagnosticSettings 'Microsoft.Insights/diagnosticSettings@2021-05
       }
     ]
     workspaceId: logAnalytics.id
-  }
-}
-
-resource appConfig 'Microsoft.AppConfiguration/configurationStores@2021-10-01-preview' = {
-  name: appConfigStoreName
-  tags: tags
-  location: location
-  sku: {
-    name: 'standard'
-  }
-  identity: {
-    type: 'SystemAssigned'
   }
 }
 
