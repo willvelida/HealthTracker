@@ -19,6 +19,15 @@
         },
         "logAnalyticsWorkspaceName": {
             "value": "myhealthtrackerla"
+        },
+        "apimName" : {
+            "value": "myhealthtrackerapim"
+        },
+        "apimPublisherEmail": {
+            "value": "willvelida@microsoft.com"
+        },
+        "apimPublisherName": {
+            "value": "My Health Tracker"
         }
     }
 }

@@ -22,6 +22,15 @@ param logAnalyticsWorkspaceName string
 @description('The name of the Service Bus Namespace that will be deployed')
 param serviceBusNamespaceName string
 
+@description('The name of the APIM instance that will be deployed')
+param apimName string
+
+@description('The Publisher Email for APIM')
+param apimPublisherEmail string
+
+@description('The name of the Publisher for APIM')
+param apimPublisherName string
+
 var cosmosDBName = 'MyHealthTrackerDB'
 var cosmosContainerName = 'Records'
 var tags = {
@@ -34,6 +43,7 @@ var retentionPolicy = {
   days: 30
   enabled: true 
 }
+var apimSkuName = 'Developer'
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: appServicePlanName
@@ -205,5 +215,18 @@ resource serviceBus 'Microsoft.ServiceBus/namespaces@2021-11-01' = {
   }
   identity: {
     type: 'SystemAssigned'
+  }
+}
+
+resource apim 'Microsoft.ApiManagement/service@2021-12-01-preview' = {
+  name: apimName
+  location: location 
+  sku: {
+    capacity: 1
+    name: apimSkuName
+  }
+  properties: {
+    publisherEmail: apimPublisherEmail
+    publisherName: apimPublisherName
   }
 }

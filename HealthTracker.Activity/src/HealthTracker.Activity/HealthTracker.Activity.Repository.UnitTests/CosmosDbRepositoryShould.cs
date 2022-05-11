@@ -2,7 +2,7 @@ using Xunit;
 
 namespace HealthTracker.Activity.Repository.UnitTests
 {
-    public class UnitTest1
+    public class CosmosDbRepositoryShould
     {
         [Fact]
         public void Test1()
