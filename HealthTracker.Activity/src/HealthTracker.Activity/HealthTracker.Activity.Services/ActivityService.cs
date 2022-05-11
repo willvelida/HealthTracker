@@ -25,6 +25,36 @@ namespace HealthTracker.Activity.Services
             _cosmosDbRepository = cosmosDbRepository;
         }
 
+        public async Task<mdl.ActivityEnvelope> GetActivityRecordByDate(string activityDate)
+        {
+            try
+            {
+                var activityRecord = await _cosmosDbRepository.GetActivityByDate(activityDate);
+
+                return activityRecord;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception thrown in {nameof(GetActivityRecordByDate)}: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<List<mdl.ActivityEnvelope>> GetAllActivityRecords()
+        {
+            try
+            {
+                var activityRecords = await _cosmosDbRepository.GetActivities();
+
+                return activityRecords;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception thrown in {nameof(GetAllActivityRecords)}: {ex.Message}");
+                throw;
+            }
+        }
+
         public async Task MapActivityEnvelopeAndSaveToDatabase(mdl.Activity activity)
         {
             try

@@ -7,5 +7,7 @@ namespace HealthTracker.Activity.Services.Interfaces
     {
         Task MapAndSendActivityRecordToQueue(string date, ActivityResponse activityResponse);
         Task MapActivityEnvelopeAndSaveToDatabase(mdl.Activity activity);
+        Task<List<mdl.ActivityEnvelope>> GetAllActivityRecords();
+        Task<mdl.ActivityEnvelope> GetActivityRecordByDate(string activityDate);
     }
 }
