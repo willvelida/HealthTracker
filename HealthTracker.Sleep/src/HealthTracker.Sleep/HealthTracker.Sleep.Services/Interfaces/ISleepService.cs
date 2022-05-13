@@ -1,5 +1,5 @@
-﻿using mdl = HealthTracker.Common.Models;
-using HealthTracker.Sleep.Common.Models;
+﻿using HealthTracker.Sleep.Common.Models;
+using mdl = HealthTracker.Common.Models;
 
 namespace HealthTracker.Sleep.Services.Interfaces
 {

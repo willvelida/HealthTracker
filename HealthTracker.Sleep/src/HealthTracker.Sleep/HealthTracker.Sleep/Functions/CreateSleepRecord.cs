@@ -1,10 +1,9 @@
-using System;
-using System.Threading.Tasks;
 using HealthTracker.Sleep.Services.Interfaces;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System;
+using System.Threading.Tasks;
 using mdl = HealthTracker.Common.Models;
 
 namespace HealthTracker.Sleep.Functions
@@ -21,7 +20,7 @@ namespace HealthTracker.Sleep.Functions
         }
 
         [FunctionName(nameof(CreateSleepRecord))]
-        public async Task Run([ServiceBusTrigger("sleepqueue", Connection = "ServiceBusConnection")]string sleepQueueItem)
+        public async Task Run([ServiceBusTrigger("sleepqueue", Connection = "ServiceBusConnection")] string sleepQueueItem)
         {
             try
             {
