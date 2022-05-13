@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracker.Sleep", "HealthTracker.Sleep\HealthTracker.Sleep.csproj", "{E1E0558F-1988-451F-AA89-6B75FB684314}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTracker.Sleep", "HealthTracker.Sleep\HealthTracker.Sleep.csproj", "{E1E0558F-1988-451F-AA89-6B75FB684314}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracker.Sleep.Common", "HealthTracker.Sleep.Common\HealthTracker.Sleep.Common.csproj", "{4583670C-9E9D-446B-A967-25E06DD55766}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTracker.Sleep.Common", "HealthTracker.Sleep.Common\HealthTracker.Sleep.Common.csproj", "{4583670C-9E9D-446B-A967-25E06DD55766}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracker.Sleep.Repository", "HealthTracker.Sleep.Repository\HealthTracker.Sleep.Repository.csproj", "{18C81531-7D01-4E2E-A345-1F5A8F825E71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracker.Sleep.Services", "HealthTracker.Sleep.Services\HealthTracker.Sleep.Services.csproj", "{9A78F2BD-2087-4593-98F0-F8AB4AF0EEC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{4583670C-9E9D-446B-A967-25E06DD55766}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4583670C-9E9D-446B-A967-25E06DD55766}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4583670C-9E9D-446B-A967-25E06DD55766}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C81531-7D01-4E2E-A345-1F5A8F825E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C81531-7D01-4E2E-A345-1F5A8F825E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C81531-7D01-4E2E-A345-1F5A8F825E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C81531-7D01-4E2E-A345-1F5A8F825E71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A78F2BD-2087-4593-98F0-F8AB4AF0EEC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A78F2BD-2087-4593-98F0-F8AB4AF0EEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A78F2BD-2087-4593-98F0-F8AB4AF0EEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A78F2BD-2087-4593-98F0-F8AB4AF0EEC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
