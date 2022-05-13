@@ -4,5 +4,7 @@
     {
         public string SleepQueueName { get; set; }
         public string AccessTokenName { get; set; }
+        public string DatabaseName { get; set; }
+        public string ContainerName { get; set; }
     }
 }

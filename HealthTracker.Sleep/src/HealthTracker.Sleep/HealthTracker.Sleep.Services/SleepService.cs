@@ -41,7 +41,7 @@ namespace HealthTracker.Sleep.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Exception thrown in {nameof(AddSleepDocument)}: {ex.Message}");
+                _logger.LogError($"Exception thrown in {nameof(MapSleepEnvelopeAndSaveToDatabase)}: {ex.Message}");
                 throw;
             }
         }
@@ -59,6 +59,34 @@ namespace HealthTracker.Sleep.Services
             catch (Exception ex)
             {
                 _logger.LogError($"Exception thrown in {nameof(MapAndSendSleepRecordToQueue)}: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<List<mdl.SleepEnvelope>> GetAllSleepEnvelopeRecords()
+        {
+            try
+            {
+                var sleepEnvelopes = await _cosmosDbRepository.GetAllSleepDocuments();
+                return sleepEnvelopes;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception thrown in {nameof(GetAllSleepEnvelopeRecords)}: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<mdl.SleepEnvelope> GetSleepEnvelopeByDate(string date)
+        {
+            try
+            {
+                var sleep = await _cosmosDbRepository.GetSleepEnvelopeByDate(date);
+                return sleep;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Exception thrown in {nameof(GetSleepEnvelopeByDate)}: {ex.Message}");
                 throw;
             }
         }

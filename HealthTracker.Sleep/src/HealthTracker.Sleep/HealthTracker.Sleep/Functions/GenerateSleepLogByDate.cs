@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace HealthTracker.Sleep.Functions
 {
-    public class GetSleepLogByDate
+    public class GenerateSleepLogByDate
     {
         private readonly IFitbitService _fitbitService;
         private readonly ISleepService _sleepService;
-        private readonly ILogger<GetSleepLogByDate> _logger;
+        private readonly ILogger<GenerateSleepLogByDate> _logger;
 
-        public GetSleepLogByDate(IFitbitService fitbitService, ISleepService sleepService, ILogger<GetSleepLogByDate> logger)
+        public GenerateSleepLogByDate(IFitbitService fitbitService, ISleepService sleepService, ILogger<GenerateSleepLogByDate> logger)
         {
             _fitbitService = fitbitService;
             _sleepService = sleepService;
             _logger = logger;
         }
 
-        [FunctionName(nameof(GetSleepLogByDate))]
+        [FunctionName(nameof(GenerateSleepLogByDate))]
         public async Task Run([TimerTrigger("0 15 5 * * *")] TimerInfo myTimer)
         {
             try
@@ -34,7 +34,7 @@ namespace HealthTracker.Sleep.Functions
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Exception thrown in {nameof(GetSleepLogByDate)}: {ex.Message}");
+                _logger.LogError($"Exception thrown in {nameof(GenerateSleepLogByDate)}: {ex.Message}");
                 throw;
             }
         }

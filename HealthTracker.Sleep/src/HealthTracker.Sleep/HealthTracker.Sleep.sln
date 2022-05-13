@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracker.Sleep.Reposit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracker.Sleep.Services", "HealthTracker.Sleep.Services\HealthTracker.Sleep.Services.csproj", "{9A78F2BD-2087-4593-98F0-F8AB4AF0EEC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracker.Sleep.Repository.UnitTests", "HealthTracker.Sleep.Repository.UnitTests\HealthTracker.Sleep.Repository.UnitTests.csproj", "{1B18D30A-F973-4CDB-BEE5-A972A0831E4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9A78F2BD-2087-4593-98F0-F8AB4AF0EEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A78F2BD-2087-4593-98F0-F8AB4AF0EEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A78F2BD-2087-4593-98F0-F8AB4AF0EEC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B18D30A-F973-4CDB-BEE5-A972A0831E4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B18D30A-F973-4CDB-BEE5-A972A0831E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B18D30A-F973-4CDB-BEE5-A972A0831E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B18D30A-F973-4CDB-BEE5-A972A0831E4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
