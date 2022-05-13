@@ -1,7 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
 using HealthTracker.Activity.Common;
-using mdl = HealthTracker.Common.Models;
 using HealthTracker.Activity.Repository.UnitTests.Helpers;
 using HealthTracker.Common.Models;
 using Microsoft.Azure.Cosmos;
@@ -13,6 +12,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using mdl = HealthTracker.Common.Models;
 
 namespace HealthTracker.Activity.Repository.UnitTests
 {
